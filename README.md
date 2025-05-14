@@ -15,8 +15,8 @@ This repository is dedicated to documenting my journey as I learn the C programm
 
 The repository is organized into the following sections:
 
-1. **Basics**: Fundamental concepts of C, including syntax, data types, and control structures.
-2. **Intermediate**: Topics like pointers, memory management, and file handling.
+1. **Basics**: Fundamental concepts of C, including syntax, data types (including entry into pointers), and control structures.
+2. **Intermediate**: Topics like advance pointers, memory management, and file handling.
 3. **Advanced**: Advanced concepts such as multithreading, networking, and system programming.
 4. **Frameworks**: Exploration of popular C frameworks and libraries.
 5. **Projects**: Hands-on projects to apply what I've learned.

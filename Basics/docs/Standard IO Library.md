@@ -126,6 +126,37 @@ The Standard Input/Output (I/O) library in C provides functions for performing i
   }
   ```
 
+### 7. `strcspn` (with stdio.h and string.h)
+
+- **Purpose**: Calculates the length of the initial segment of a string that does not contain any character from another specified string. Commonly used to remove trailing newlines from strings read with `fgets`.
+- **Syntax**:
+  ```c
+  size_t strcspn(const char *str1, const char *str2);
+  ```
+- **Example**:
+
+  ```c
+  #include <stdio.h>
+  #include <string.h>
+
+  int main() {
+      char name[50];
+      printf("Enter your name: ");
+      fgets(name, 50, stdin);
+
+      // Remove trailing newline character
+      name[strcspn(name, "\n")] = '\0';
+
+      printf("Hello, %s!\n", name);
+      return 0;
+  }
+  ```
+
+- **Explanation**:
+  - When `fgets` reads input, it includes the newline character `\n` that was entered when pressing Enter.
+  - `strcspn(name, "\n")` finds the position of the newline character in the string.
+  - Setting that position to `'\0'` effectively removes the newline by terminating the string at that point.
+
 ## Key Points
 
 - The `<stdio.h>` library is essential for basic input and output operations in C.

@@ -4,7 +4,7 @@
  * 
  * @author FaisalSWEN
  * @date 2025-05-10
- * @version 1.0
+ * @version 2.0
  */
 
 #include <stdio.h>
@@ -24,6 +24,8 @@ int main() {
     // Print the concatenated string
     printf("\n[+] %s %s\n", greetings, name);
     printf("[+] %s\n", concatenated);
+    printf("[+] Length of the previously string: %zu\n", strlen(concatenated)); // Print the length of the concatenated string
+    printf("[+] Size of the previously string: %zu\n", sizeof(concatenated)); // Print the size of the concatenated string
 
     return 0;
 }

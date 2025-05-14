@@ -168,6 +168,123 @@ Size of char: 1 byte
 
 The `%zu` specifier ensures portability and correctness when working with `size_t` values, making it the preferred choice for printing sizes in C.
 
+## Format Specifier Modifiers
+
+Format specifiers can include optional modifiers that control the width, precision, alignment, and other aspects of how data is displayed.
+
+### Width and Precision
+
+- **Width**: Specifies the minimum number of characters to be output.
+- **Precision**: Specifies the number of decimal places for floating-point numbers or the maximum number of characters for strings.
+
+```c
+#include <stdio.h>
+
+int main() {
+    float num = 3.14159;
+    printf("Right-aligned, width 10: '%10f'\n", num);     // Width of 10
+    printf("Precision 2 decimal places: '%.2f'\n", num);  // 2 decimal places
+    printf("Width 10, precision 2: '%10.2f'\n", num);     // Combined
+
+    char str[] = "Hello";
+    printf("String, max 3 chars: '%.3s'\n", str);         // Max 3 characters
+    return 0;
+}
+```
+
+Output:
+
+```
+Right-aligned, width 10: '  3.141590'
+Precision 2 decimal places: '3.14'
+Width 10, precision 2: '      3.14'
+String, max 3 chars: 'Hel'
+```
+
+### Flags
+
+- **`-`**: Left-align the output within the specified width.
+- **`+`**: Always include a sign (+ or -) for numeric values.
+- **`0`**: Pad with leading zeros instead of spaces.
+- **`#`**: Alternate form (e.g., adds '0x' prefix for hexadecimal).
+- **` `**: (space) Leaves a space before positive numbers.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num = 42;
+    int negative = -42;
+
+    printf("Left-aligned, width 5: '%-5d'\n", num);         // Left-aligned
+    printf("Sign shown: '%+d' and '%+d'\n", num, negative); // Show sign
+    printf("Zero-padded, width 5: '%05d'\n", num);          // Zero padding
+    printf("Alternate form (hex): '%#x'\n", num);           // Alternate form
+    printf("Space for positive: '% d' and '% d'\n", num, negative); // Space
+
+    return 0;
+}
+```
+
+Output:
+
+```
+Left-aligned, width 5: '42   '
+Sign shown: '+42' and '-42'
+Zero-padded, width 5: '00042'
+Alternate form (hex): '0x2a'
+Space for positive: ' 42' and '-42'
+```
+
+### Length Modifiers
+
+Length modifiers specify the size of the argument:
+
+- **`h`**: Used with integers to indicate `short int` or `unsigned short int`.
+- **`l`**: Used with integers for `long int` or with floating-point for `double`.
+- **`ll`**: Used with integers to indicate `long long int`.
+- **`L`**: Used with floating-point for `long double`.
+
+```c
+#include <stdio.h>
+
+int main() {
+    short s = 32767;
+    long l = 2147483647L;
+    long long ll = 9223372036854775807LL;
+
+    printf("Short: '%hd'\n", s);
+    printf("Long: '%ld'\n", l);
+    printf("Long Long: '%lld'\n", ll);
+
+    return 0;
+}
+```
+
+### Format Modifiers in `scanf`
+
+Format modifiers are also used with `scanf`:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int width;
+    float value;
+
+    // Read an integer with maximum width of 2 digits
+    printf("Enter a number (max 2 digits): ");
+    scanf("%2d", &width);
+
+    // Read a float with exactly 4 decimal places
+    printf("Enter a float with format XX.XXXX: ");
+    scanf("%f", &value);
+
+    printf("You entered: %d and %f\n", width, value);
+    return 0;
+}
+```
+
 ## Key Points
 
 - Format specifiers are essential for handling different data types in formatted input/output.
